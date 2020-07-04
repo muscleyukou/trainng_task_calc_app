@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "180197302574",
+    "firebase_url": "https://training-task-calc-app.firebaseio.com",
+    "project_id": "training-task-calc-app",
+    "storage_bucket": "training-task-calc-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180197302574:android:86bb67940dba585be95abf",
+        "android_client_info": {
+          "package_name": "com.example.trainngtaskcalcapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "180197302574-vpldbcgsi50odqf4ob5eahm4aat6ib89.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.trainngtaskcalcapp",
+            "certificate_hash": "86c841f5b5955bfeb690458bea91830669c39822"
+          }
+        },
+        {
+          "client_id": "180197302574-20cjs20pn2fie295cqba9cf5ngetqjmi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANYaty0zMAi2Tntqi257BDvBrzeGNHMVM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "180197302574-20cjs20pn2fie295cqba9cf5ngetqjmi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
