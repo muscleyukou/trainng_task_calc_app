@@ -7,12 +7,12 @@ class TrainingCalender extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<TrainingTaskModel>(builder: (context, model, child) {
-      final training=model.training;
+     /* final training=model.training;
       final listTiles=training
           .map((workout) => ListTile(
         title: Text(workout.menu),
       ),
-    );
+    );*/
       return Container(
         child: TableCalendar(
           events: model.events,
@@ -20,7 +20,7 @@ class TrainingCalender extends StatelessWidget {
           calendarController: model.calendarController,
           onDaySelected: model.onDaySelected,
           builders:CalendarBuilders(
-            selectedDayBuilder: (context, date, events) => Container(
+            selectedDayBuilder: (context, date, training) => Container(
                 margin: const EdgeInsets.all(4.0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
@@ -30,7 +30,7 @@ class TrainingCalender extends StatelessWidget {
                   date.day.toString(),
                   style: TextStyle(color: Colors.white),
                 )),
-            todayDayBuilder: (context, date, events) => Container(
+            todayDayBuilder: (context, date, training) => Container(
                 margin: const EdgeInsets.all(4.0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(

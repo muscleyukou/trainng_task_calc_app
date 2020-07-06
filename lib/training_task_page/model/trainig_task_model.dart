@@ -1,4 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:firebase_helpers/firebase_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -8,23 +9,26 @@ import "package:intl/intl.dart";
 
 
 class TrainingTaskModel extends ChangeNotifier {
-  List<Training>training = [];
-
-  Future fetchTraining() async {
-    final docs = await Firestore.instance.collection('training').getDocuments();
-    final training = docs.documents.map((doc) => Training(doc)).toList();
-    this.training = training;
-    notifyListeners();
-  }
-
+  DatabaseService<EventModel> eventDBS = DatabaseService<EventModel>("training",fromDS: (id,data)
+  => EventModel.fromDS(id, data), toMap:(training) => training.toMap());
   CalendarController calendarController = CalendarController();
   NumberPicker decimalNumberPicker;
-  Map<DateTime, List<dynamic>> events;
-  List<dynamic>selectedEvents;
+  DateTime eventDate;
+  Map<DateTime, List> events;
+  List <EventModel>selectedEvents;
+
+
   int _indexNumber=1;
   get indexNumber=>_indexNumber;
   set indexNumber(int index){
     _indexNumber=index;
+    notifyListeners();
+  }
+
+  int _setWeightNumber=1;
+  get setWeightNumber=>_setWeightNumber;
+  set setWeightNumber(int index){
+    _setWeightNumber=index;
     notifyListeners();
   }
 
@@ -49,11 +53,13 @@ class TrainingTaskModel extends ChangeNotifier {
     calendarController = CalendarController();
     events = {};
     selectedEvents = [];
+   eventDate=DateTime.now();
     notifyListeners();
   }
 
-  onDaySelected(DateTime day, List events) {
-    print(day.toIso8601String());
+  onDaySelected(date,training) {
+    selectedEvents=training;
+    notifyListeners();
   }
 
   int _currentWeightIndex = 30;
