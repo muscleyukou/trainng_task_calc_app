@@ -11,9 +11,7 @@ class CompareMax extends StatelessWidget {
       }),),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Center(
-          child:Image.asset('assets/image/dumbbell.png'),
-        ),
+
       ),
     );
   }

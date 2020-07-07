@@ -1,6 +1,7 @@
 
 import 'package:firebase_helpers/firebase_helpers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_calendar_carousel/classes/event_list.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:trainngtaskcalcapp/parts/training.dart';
@@ -13,11 +14,11 @@ class TrainingTaskModel extends ChangeNotifier {
   => EventModel.fromDS(id, data), toMap:(training) => training.toMap());
   CalendarController calendarController = CalendarController();
   NumberPicker decimalNumberPicker;
+  EventModel event;
   DateTime eventDate;
-  Map<DateTime, List> events;
-  List <EventModel>selectedEvents;
-
-
+  Map<DateTime, List<EventModel>> events;
+  List<EventModel>selectedEvents;
+  EventList<EventModel> markedDateMap = EventList<EventModel>();
   int _indexNumber=1;
   get indexNumber=>_indexNumber;
   set indexNumber(int index){
@@ -53,12 +54,15 @@ class TrainingTaskModel extends ChangeNotifier {
     calendarController = CalendarController();
     events = {};
     selectedEvents = [];
-   eventDate=DateTime.now();
+    eventDate=DateTime.now();
     notifyListeners();
   }
 
   onDaySelected(date,training) {
+    eventDate=date;
     selectedEvents=training;
+    print(date);
+    print(training);
     notifyListeners();
   }
 
