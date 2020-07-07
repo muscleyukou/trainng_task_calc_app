@@ -1,4 +1,5 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_helpers/firebase_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/classes/event_list.dart';
@@ -16,6 +17,7 @@ class TrainingTaskModel extends ChangeNotifier {
   NumberPicker decimalNumberPicker;
   EventModel event;
   DateTime eventDate;
+
   Map<DateTime, List<EventModel>> events;
   List<EventModel>selectedEvents;
   EventList<EventModel> markedDateMap = EventList<EventModel>();
@@ -72,6 +74,17 @@ class TrainingTaskModel extends ChangeNotifier {
   set currentWeightIndex(int index) {
     _currentWeightIndex = index;
     notifyListeners();
+  }
+  String trainingMenu='';
+  Future inputMenu()async{
+    if(trainingMenu.isEmpty){
+      throw('タイトルを入力してください');
+    }else{
+      Firestore.instance.collection('training')
+          .add({
+        'menu':trainingMenu,
+      });
+    }
   }
 
 }

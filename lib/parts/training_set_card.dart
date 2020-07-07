@@ -14,13 +14,13 @@ class TrainingSetWeight extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                color: Colors.blueAccent[100],
+                  color: Colors.blueAccent[100],
                   height: 50,
                   alignment: Alignment.center,
                   child: Text(
-                'セットと重量の入力',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300),
-              )),
+                    '重量と回数の入力',
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300),
+                  )),
               //todo modelの追加
               SizedBox(
                 height: 15,
@@ -51,7 +51,7 @@ class TrainingSetWeight extends StatelessWidget {
                     width: 160,
                     child: Column(
                       children: [
-                        Text('セット数'),
+                        Text('回数'),
                         TextField(),
                       ],
                     ),
